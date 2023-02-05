@@ -1,16 +1,32 @@
 const Employee = require('../lib/employee')
 
 describe('Employee', () => {
-  it('Creates a new Employee class.', () => {
-    const results = new Employee('Manager', 'Jacob', 'Jeffries', '007', 'email@email.com', '3308');
+  it('Creates a new Employee class, from input object', () => {
+    const obj = {
+      title: 'Manager',
+      fname: 'Bilbo',
+      lname: 'Baggins',
+      id: '007',
+      office: '1 Baggend Way'
+    }
+
+    const results = new Employee(obj);
     console.log(results);
-    
+
     expect(results instanceof Employee);
   })
 
   it('Should have a postion parameter.', () => {
-    const results = new Employee('Manager', 'Jacob', 'Jeffries', '007', 'email@email.com', '3308');
+    const obj = {
+      title: 'Manager',
+      fname: 'Bilbo',
+      lname: 'Baggins',
+      id: '007',
+      office: '1 Baggend Way'
+    }
 
-    expect(results.postion).toEqual('Manager');
+    const results = new Employee(obj);
+
+    expect(results.title).toEqual('Manager');
   })
 });
