@@ -1,6 +1,5 @@
 const Employee = require('../lib/employee');
-const Manager = require('../lib/Intern');
-const Intern = require('../lib/Intern');
+const Manager = require('../lib/Manager');
 
 let name = 'Bilbo';
 let id = '007';
@@ -8,10 +7,10 @@ let email = 'bilbo@shire.com';
 let officeNumber = '3308';
 let role = 'Manager'
 
-let bilbo = new Intern(name, id, email, officeNumber);
+let bilbo = new Manager(name, id, email, officeNumber);
 
 describe('Manager', () => {
-  it('Creates a new Engineer SubClass, from input', () => {
+  it('Creates a new Manager SubClass, from input', () => {
     // console.log(bilbo);
     expect(bilbo).toBeInstanceOf(Employee);
     expect(bilbo).toBeInstanceOf(Manager);
@@ -41,11 +40,11 @@ describe('Manager', () => {
     }) 
   })
 
-  describe('getSchool', () => {
-    it(`It returns ${school}`, () => {
-      const results = bilbo.getSchool();
+  describe('getOfficeNumber', () => {
+    it(`It returns ${officeNumber}`, () => {
+      const results = bilbo.getOfficeNumber();
       // console.log(results);
-      expect(results).toEqual(school);
+      expect(results).toEqual(officeNumber);
     }) 
   })
 
