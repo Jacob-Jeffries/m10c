@@ -1,55 +1,49 @@
 const Employee = require('../lib/employee')
 
-describe.only('Employee', () => {
+let name = 'Bilbo';
+let id = '007';
+let email = 'bilbo@shire.com';
+let role = 'Employee';
+
+let bilbo = new Employee(name, id, email);
+
+describe('Employee', () => {
   it('Creates a new Employee class, from input', () => {
-
-    const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com');
-    
-    console.log(results);
-
-    expect(results instanceof Employee);
+    const results = bilbo;
+    // console.log(results);
+    expect(results).toBeInstanceOf(Employee);
   })
 
   describe('getName', () =>{
-    it('Returns the Employee\'s name.', () => {
-      const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getName();
-
-      console.log(results);
-
-      expect(results).toEqual('Bilbo Baggins');
+    it(`It returns ${name}`, () => {
+      const results = bilbo.getName();
+      // console.log(results);
+      expect(results).toEqual(name);
 
     })
   })
 
   describe('getID', () =>{
-    it('Returns the Employee\'s name.', () => {
-      const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getID();
-
-      console.log(results);
-
-      expect(results).toEqual('007');
-
+    it(`It returns ${id}`, () => {
+      const results = bilbo.getID();
+      // console.log(results);
+      expect(results).toEqual(id);
     })
   })
 
   describe('getEmal', () =>{
-    it('Returns the Employee\'s name.', () => {
-      const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getEmail();
-
-      console.log(results);
-
-      expect(results).toEqual('bilbo@shire.com');
-
+    it(`It returns ${email}`, () => {
+      const results = bilbo.getEmail();
+      // console.log(results);
+      expect(results).toEqual(email);
     })
   })
 
   describe('getRole', () => {
-    it('Returns Employee', () => {
-      const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getRole();
-
-      console.log(results);
-
-      expect(results).toEqual('Employee');
+    it(`It returns ${role}`, () => {
+      const results = bilbo.getRole();
+      // console.log(results);
+      expect(results).toEqual(role);
     })
   })
 });
