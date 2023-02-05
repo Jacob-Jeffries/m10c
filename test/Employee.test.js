@@ -1,5 +1,3 @@
-const { it } = require('node:test');
-const { describe } = require('yargs');
 const Employee = require('../lib/employee')
 
 describe.only('Employee', () => {
@@ -13,12 +11,34 @@ describe.only('Employee', () => {
   })
 
   describe('getName', () =>{
-    it('Returns the Eomploy\'s name.' () => {
+    it('Returns the Employee\'s name.', () => {
       const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getName();
 
       console.log(results);
 
       expect(results).toEqual('Bilbo Baggins');
+
+    })
+  })
+
+  describe('getID', () =>{
+    it('Returns the Employee\'s name.', () => {
+      const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getID();
+
+      console.log(results);
+
+      expect(results).toEqual('007');
+
+    })
+  })
+
+  describe('getEmal', () =>{
+    it('Returns the Employee\'s name.', () => {
+      const results = new Employee('Bilbo Baggins', '007', 'bilbo@shire.com').getEmail();
+
+      console.log(results);
+
+      expect(results).toEqual('bilbo@shire.com');
 
     })
   })
