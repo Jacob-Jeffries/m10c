@@ -2,56 +2,14 @@
 
 const inq = require('inquirer');
 const fs = require('fs');
-const emp = require('./employee');
-const Employee = require('./employee');
+const Employee = require('./lib/employee');
+const Engineer = require('./lib/Engineer');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
 
-function getManager() {
+function main() {
   console.log(`\n----------\n`);
-  console.log(`Enter the information for your team's manager:\n`);
-
-  inq
-  .prompt([
-    {
-      type: 'checkbox',
-      message: 'This is the Manager Posiiton',
-      name: 'title',
-      choices: ['Manager'],
-    },
-    {
-      type: 'input',
-      message: 'Enter the employee\'s first name: ',
-      name: 'fname',
-    },
-    {
-      type: 'input',
-      message: 'Enter the employ\'s last name: ',
-      name: 'lname',
-    },
-    {
-      type: 'input',
-      message: 'Enter the employee\'s ID: ',
-      name: 'id',
-    },
-    {
-      type: 'input',
-      message: 'Enter the employee\'s email address: ',
-      name: 'email',
-    },
-    {
-      type: 'input',
-      message: 'Enter the employee\'s office number: ',
-      name: 'office',
-    }
-  ])
-  .then((response) => {
-    console.log(response);
-    const manager = new Employee(response);
-    return manager;    
-  })
+  console.log(`Welcome to Jacob's Team Builder Application!\n`);
 }
 
-getManager();
-
-module.exports = {
-  getManager,
-}
+main();
