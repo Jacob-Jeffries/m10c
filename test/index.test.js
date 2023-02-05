@@ -7,6 +7,7 @@ describe('Employee', () => {
       fname: 'Bilbo',
       lname: 'Baggins',
       id: '007',
+      email: 'bilbo_baggins@shire.com',
       office: '1 Baggend Way'
     }
 
@@ -22,11 +23,12 @@ describe('Employee', () => {
       fname: 'Bilbo',
       lname: 'Baggins',
       id: '007',
+      email: 'bilbo_baggins@shire.com',
       office: '1 Baggend Way'
     }
 
     const results = new Employee(obj);
 
-    expect(results.title).toEqual('Manager');
+    expect(results.title).toEqual(obj.title);
   })
 });
