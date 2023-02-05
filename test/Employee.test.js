@@ -1,37 +1,49 @@
 const Employee = require('../lib/employee')
 
+let name = 'Bilbo';
+let id = '007';
+let email = 'bilbo@shire.com';
+let role = 'Employee';
+
+let bilbo = new Employee(name, id, email);
+
 describe('Employee', () => {
-  it('Creates a new Employee class, from input object', () => {
-    const obj = {
-      title: ['Manager'],
-      fname: 'Bilbo',
-      lname: 'Baggins',
-      id: '007',
-      email: 'bilbo_baggins@shire.com',
-      office: '1 Baggend Way'
-    }
-
-    const results = new Employee(obj);
-    console.log(results);
-
-    expect(results instanceof Employee);
+  it('Creates a new Employee class, from input', () => {
+    const results = bilbo;
+    // console.log(results);
+    expect(results).toBeInstanceOf(Employee);
   })
 
-  it('Should have a postion parameter.', () => {
-    const obj = {
-      title: ['Manager'],
-      fname: 'Bilbo',
-      lname: 'Baggins',
-      id: '007',
-      email: 'bilbo_baggins@shire.com',
-      office: '1 Baggend Way'
-    }
+  describe('getName', () =>{
+    it(`It returns ${name}`, () => {
+      const results = bilbo.getName();
+      // console.log(results);
+      expect(results).toEqual(name);
 
-    const results = new Employee(obj);
+    })
+  })
 
-    console.log(`Expect: ${obj.title}`);
-    console.log(`Results: ${results.title}`);
+  describe('getID', () =>{
+    it(`It returns ${id}`, () => {
+      const results = bilbo.getID();
+      // console.log(results);
+      expect(results).toEqual(id);
+    })
+  })
 
-    expect(results.title).toEqual(obj.title);
+  describe('getEmal', () =>{
+    it(`It returns ${email}`, () => {
+      const results = bilbo.getEmail();
+      // console.log(results);
+      expect(results).toEqual(email);
+    })
+  })
+
+  describe('getRole', () => {
+    it(`It returns ${role}`, () => {
+      const results = bilbo.getRole();
+      // console.log(results);
+      expect(results).toEqual(role);
+    })
   })
 });
