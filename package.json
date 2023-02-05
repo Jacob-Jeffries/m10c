@@ -1,0 +1,21 @@
+{
+  "name": "m10c",
+  "version": "2024.02.25",
+  "description": "Node CLI app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "watch": "nodemon index",
+    "test": "jest"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.20"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
