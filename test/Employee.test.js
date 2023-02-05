@@ -3,7 +3,7 @@ const Employee = require('../lib/employee')
 describe('Employee', () => {
   it('Creates a new Employee class, from input object', () => {
     const obj = {
-      title: 'Manager',
+      title: ['Manager'],
       fname: 'Bilbo',
       lname: 'Baggins',
       id: '007',
@@ -19,7 +19,7 @@ describe('Employee', () => {
 
   it('Should have a postion parameter.', () => {
     const obj = {
-      title: 'Manager',
+      title: ['Manager'],
       fname: 'Bilbo',
       lname: 'Baggins',
       id: '007',
@@ -28,6 +28,9 @@ describe('Employee', () => {
     }
 
     const results = new Employee(obj);
+
+    console.log(`Expect: ${obj.title}`);
+    console.log(`Results: ${results.title}`);
 
     expect(results.title).toEqual(obj.title);
   })
