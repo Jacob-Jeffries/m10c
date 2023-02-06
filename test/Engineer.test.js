@@ -7,7 +7,7 @@ let email = 'bilbo@shire.com';
 let github = 'github';
 let role = 'Engineer'
 
-let bilbo = new Engineer(name, id, email, github);
+let bilbo = new Engineer(role, name, id, email, github);
 
 describe('Engineer', () => {
   it('Creates a new Engineer SubClass, from input', () => {

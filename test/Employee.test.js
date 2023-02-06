@@ -5,7 +5,7 @@ let id = '007';
 let email = 'bilbo@shire.com';
 let role = 'Employee';
 
-let bilbo = new Employee(name, id, email);
+let bilbo = new Employee(role, name, id, email);
 
 describe('Employee', () => {
   it('Creates a new Employee class, from input', () => {
