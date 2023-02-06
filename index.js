@@ -8,14 +8,21 @@ const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const { identifier } = require('@babel/types');
 
-function main() {
+async function main() {
   console.log(`\n                ----------                \n`);
   console.log(`Welcome to Jacob's Team Builder Application!\n`);
   console.log(`         Copyright 2023 Jacob Jeffries      `);
   console.log(`\n                ----------                \n`);
   console.log(`\n\nLet's begin by assigning your Team Manager:\n`);
 
-  getInfo('Manager');
+  let man = await getInfo('Manager')
+  .then((data) => {
+    console.log(data)
+    const { a0, a1, a2, a3 } = data;
+    return ['Manager', a0, a1, a2, a3];
+  });
+
+  console.log(man);
 
 }
 
@@ -60,17 +67,7 @@ function getInfo(role){
     },
   ];
 
-  inq
-    .prompt(query)
-    .then((data) => {
-      console.log(data)
-
-      const filename = `./dist/${role}.json`;
-      fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
-      err ? console.log(err) : console.log('Success!')
-      );
-    }
-  )
+  return inq.prompt(query);
 }
 
 main();
