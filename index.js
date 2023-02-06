@@ -8,22 +8,29 @@ const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const { identifier } = require('@babel/types');
 
+let team = [];
+
 async function main() {
   console.log(`\n                ----------                \n`);
   console.log(`Welcome to Jacob's Team Builder Application!\n`);
   console.log(`         Copyright 2023 Jacob Jeffries      `);
   console.log(`\n                ----------                \n`);
-  console.log(`\n\nLet's begin by assigning your Team Manager:\n`);
 
-  let man = await getInfo('Manager')
+  await createManger('Manager');
+
+  console.log(team);
+  console.log(team[0].getName());
+}
+
+async function createManger(role){
+  await getInfo('Manager')
   .then((data) => {
     console.log(data)
     const { a0, a1, a2, a3 } = data;
-    return ['Manager', a0, a1, a2, a3];
+    const team_member = new Manager('Manger', a0, a1, a2, a3);
+    team.push(team_member);
+    return;
   });
-
-  console.log(man);
-
 }
 
 function getInfo(role){
