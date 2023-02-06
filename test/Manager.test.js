@@ -7,7 +7,7 @@ let email = 'bilbo@shire.com';
 let officeNumber = '3308';
 let role = 'Manager'
 
-let bilbo = new Manager(name, id, email, officeNumber);
+let bilbo = new Manager(role, name, id, email, officeNumber);
 
 describe('Manager', () => {
   it('Creates a new Manager SubClass, from input', () => {

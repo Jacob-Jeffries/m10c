@@ -7,7 +7,7 @@ let email = 'bilbo@shire.com';
 let school = 'school';
 let role = 'Intern'
 
-let bilbo = new Intern(name, id, email, school);
+let bilbo = new Intern(role, name, id, email, school);
 
 describe('Intern', () => {
   it('Creates a new Intern SubClass, from input', () => {
