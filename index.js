@@ -16,6 +16,7 @@ function main() {
   console.log(`\n\nLet's begin by assigning your Team Manager:\n`);
 
   getInfo('Manager');
+
 }
 
 function getInfo(role){
@@ -62,12 +63,14 @@ function getInfo(role){
   inq
     .prompt(query)
     .then((data) => {
-      let response = [role, data.a0, data.a1, data.a2, data.a3];
-      console.log(response);
-      // return response;
-    }
-  );
+      console.log(data)
 
+      const filename = `./dist/${role}.json`;
+      fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
+      );
+    }
+  )
 }
 
 main();
