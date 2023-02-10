@@ -87,7 +87,7 @@ async function createManger(role){
   const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Manager(role, a0, a1, a2, a3);
+  const team_member = new Manager(role, a0, a1, a2, 'Office Number', a3);
   team.push(team_member);
   return;
 };
@@ -96,7 +96,7 @@ async function createEngineer(role){
   const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Engineer(role, a0, a1, a2, a3);
+  const team_member = new Engineer(role, a0, a1, a2, 'GitHub Profile', a3);
   team.push(team_member);
   return;
 };
@@ -105,7 +105,7 @@ async function createIntern(role){
   const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Intern(role, a0, a1, a2, a3);
+  const team_member = new Intern(role, a0, a1, a2, 'School', a3);
   team.push(team_member);
   return;
 };
