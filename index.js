@@ -16,22 +16,25 @@ async function main() {
   console.log(`         Copyright 2023 Jacob Jeffries      `);
   console.log(`\n                ----------                \n`);
 
+  console.log(`Please begin ny assinging a Team Manager by answering the following prompts:\n`);
+  
   await createManger('Manager');
 
-  console.log(team);
-  console.log(team[0].getName());
+  // console.log(team);
+  // console.log(typeof(team[0]));
+  // console.log(team[0].getName());
+
+
 }
 
 async function createManger(role){
-  await getInfo('Manager')
-  .then((data) => {
-    console.log(data)
-    const { a0, a1, a2, a3 } = data;
-    const team_member = new Manager('Manger', a0, a1, a2, a3);
-    team.push(team_member);
-    return;
-  });
-}
+  const data  = await getInfo('Manager')
+  // console.log(data)
+  const { a0, a1, a2, a3 } = data;
+  const team_member = new Manager('Manger', a0, a1, a2, a3);
+  team.push(team_member);
+  return;
+};
 
 function getInfo(role){
 
