@@ -18,13 +18,13 @@ async function main() {
 
   console.log(`Please begin ny assinging a Team Manager by answering the following prompts:\n`);
   
-  const manager = await createManger('Manager');
+  await createManger('Manager');
 
   // console.log(team);
   // console.log(typeof(team[0]));
   // console.log(team[0].getName());
 
-  const team = await buildTeam();
+  await buildTeam();
   // console.log(role);
   // console.log(role.role);
 
