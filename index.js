@@ -24,16 +24,31 @@ async function main() {
   // console.log(typeof(team[0]));
   // console.log(team[0].getName());
 
-
+  const role = await buildTeam();
+  console.log(role);
 }
 
 async function createManger(role){
-  const data  = await getInfo('Manager')
+  const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Manager('Manger', a0, a1, a2, a3);
+  const team_member = new Manager(role, a0, a1, a2, a3);
   team.push(team_member);
   return;
+};
+
+async function buildTeam() {
+  const query = [
+    {
+        type: 'list',
+        message: `What type of Team Member would you like to add next?`,
+        name: 'role',
+        choices: ['Engineer', 'Intern', 'Exit'],
+    }
+  ]
+
+  const role = inq.prompt(query);
+  return role;
 };
 
 function getInfo(role){
