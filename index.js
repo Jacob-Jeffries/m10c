@@ -156,18 +156,24 @@ function getInfo(role){
 
 function generateHTML(team){
 
-  team.forEach(element => {
-    console.log(element);
-    console.log(element.getRole());    
-  });
+  let card;
 
-  const card = 
-  `<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <a href="mailto:email@example.com">Send Email</a>
-  </div>`;
+  team.forEach(element => {
+    // console.log(element);
+    // console.log(element.getRole());
+    let tempCard =
+    `<div class="card-body">
+    <h5 class="card-title">${element.getName()}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">${element.getRole()}</h6>
+    <p class="card-text">ID: ${element.getID()}</p>
+    <p class="card-text">Email: 
+      <a href="mailto:${element.getEmail()}">${element.getEmail()}</a>
+    </p>
+    <p class="card-text">${element.getAttr()}: ${element[3]}</p>
+    </div>`;
+
+    card = card + tempCard;
+  });
 
   const index = `<!DOCTYPE html>
 
@@ -193,19 +199,19 @@ function generateHTML(team){
       <!--MY STYLE-->
       <link rel="stylesheet" href="./assets/style/style.css">
       
-      <title>Team ${name}</title>
+      <title>Team ${name.teamName}</title>
     </head>
   
     <body class="min-vh-100">
       <header>
-        <h1 id="top" class="row d-flex justify-content-center">Team ${name}</h1>
+        <h1 id="top" class="row d-flex justify-content-center">Team ${name.teamName}</h1>
         <hr />
       </header>
       
       <br />
       <br />
   
-      <main>
+      <main class="d-flex flex-row flex-wrap justify-content-around">
       ${card}
       </main>
       
@@ -235,6 +241,8 @@ function generateHTML(team){
   
   </html>
   `
+
+  console.log(index);
 }
 
 main();
