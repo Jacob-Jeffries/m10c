@@ -5,9 +5,10 @@ let name = 'Bilbo';
 let id = '007';
 let email = 'bilbo@shire.com';
 let officeNumber = '3308';
-let role = 'Manager'
+let role = 'Manager';
+let attr = 'Office Number';
 
-let bilbo = new Manager(role, name, id, email, officeNumber);
+let bilbo = new Manager(role, name, id, email, attr, officeNumber);
 
 describe('Manager', () => {
   it('Creates a new Manager SubClass, from input', () => {
@@ -53,6 +54,14 @@ describe('Manager', () => {
       const results = bilbo.getRole();
       // console.log(results);
       expect(results).toEqual(role);
+    })
+  })
+
+  describe('getAttr', () => {
+    it(`It returns ${attr}`, () => {
+      const results = bilbo.getAttr();
+      // console.log(results);
+      expect(results).toEqual(attr);
     })
   })
 });

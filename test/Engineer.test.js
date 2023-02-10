@@ -6,8 +6,9 @@ let id = '007';
 let email = 'bilbo@shire.com';
 let github = 'github';
 let role = 'Engineer'
+let attr = 'GitHub Profile';
 
-let bilbo = new Engineer(role, name, id, email, github);
+let bilbo = new Engineer(role, name, id, email, attr, github);
 
 describe('Engineer', () => {
   it('Creates a new Engineer SubClass, from input', () => {
@@ -53,6 +54,14 @@ describe('Engineer', () => {
       const results = bilbo.getRole();
       // console.log(results);
       expect(results).toEqual(role);
+    })
+  })
+
+  describe('getAttr', () => {
+    it(`It returns ${attr}`, () => {
+      const results = bilbo.getAttr();
+      // console.log(results);
+      expect(results).toEqual(attr);
     })
   })
 });
