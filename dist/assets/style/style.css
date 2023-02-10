@@ -22,13 +22,13 @@
 
 /*The idea of having another white website makes my head hurt!*/
 html{
-	background-color: black;
+	background-color: #000000;
 }
 
 /*Think of this as the page wrapper - I guess this is an older way of thinking!*/
 body { 
-	background-color: #000011;
-	color: white;
+	background-color: #000000;
+	color: rgb(4, 255, 0);
 	font-size: 12px;
 }
 

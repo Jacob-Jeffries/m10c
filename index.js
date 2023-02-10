@@ -19,18 +19,15 @@ async function main() {
   console.log(`Please begin ny assinging a Team Manager by answering the following prompts:\n`);
   
   await createManger('Manager');
-
-  // console.log(team);
-  // console.log(typeof(team[0]));
-  // console.log(team[0].getName());
+  console.log(`\n                ----------                \n`);
 
   await buildTeam();
-  // console.log(role);
-  // console.log(role.role);
+  console.log(`\n                ----------                \n`);
 
   console.log(`This is your team:`);
   console.log(team);
-}
+  console.log(`\n                ----------                \n`);
+};
 
 async function buildTeam() {
   // console.log(team);
@@ -42,7 +39,7 @@ async function buildTeam() {
         name: 'role',
         choices: ['Engineer', 'Intern', 'Exit'],
     }
-  ]
+  ];
 
   const role = await inq.prompt(query);
   // return role;
