@@ -37,6 +37,8 @@ async function main() {
   clear();
   console.log(`These are the members of ${name.teamName}:`);
   console.log(team);
+
+  generateHTML(team);
 };
 
 function clear(){
@@ -150,6 +152,89 @@ function getInfo(role){
   ];
 
   return inq.prompt(query);
+};
+
+function generateHTML(team){
+
+  team.forEach(element => {
+    console.log(element);
+    console.log(element.getRole());    
+  });
+
+  const card = 
+  `<div class="card-body">
+  <h5 class="card-title">Card title</h5>
+  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <a href="mailto:email@example.com">Send Email</a>
+  </div>`;
+
+  const index = `<!DOCTYPE html>
+
+  <html lang="en">
+  
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <!--VIEWPORT is a mandatory tag for bootstrap-->
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta author="Jacob Jeffries"/>
+      
+      <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+  
+      <!--reset.css strips the margins and padding from every element (no longer recommended by MDN); normalize.css creates homogeneity between browsers, and style.css adds my own style on top of everything.          https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/CSS-->
+  
+      <link rel="stylesheet" href="./assets/style/normalize.css"/>
+  
+      <!--BOOTSTRAP-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      
+      <!--MY STYLE-->
+      <link rel="stylesheet" href="./assets/style/style.css">
+      
+      <title>Team ${name}</title>
+    </head>
+  
+    <body class="min-vh-100">
+      <header>
+        <h1 id="top" class="row d-flex justify-content-center">Team ${name}</h1>
+        <hr />
+      </header>
+      
+      <br />
+      <br />
+  
+      <main>
+      ${card}
+      </main>
+      
+      <br />
+      <br />
+  
+      <footer >
+        <h4 class="row d-flex justify-content-center text-center">
+          Jacob's Team Builder Application!
+        </br>
+          Copyright 2023 Jacob Jeffries
+        </h4>
+        <p><!--Add Footer Here--></p>
+      </footer>
+      
+      <!--LINK Script Here-->    
+      <!--BOOTSTRAP-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  
+      <!--JQUERY-->
+      <!-- <script src="~https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>-->
+  
+      <!--JAVASCRIPT-->
+      <!-- <script src="./assets/script.js"></script>-->
+  
+    </body>
+  
+  </html>
+  `
 }
 
 main();
