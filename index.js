@@ -48,17 +48,16 @@ async function buildTeam() {
   // return role;
 
   if(role.role == 'Engineer'){
-    console.log(role);
+    // console.log(role);
     await createEngineer(role.role);
     buildTeam();
   }else if(role.role == 'Intern'){
-    console.log(role);
+    // console.log(role);
     await createIntern(role.role);
     buildTeam();
   }else{
     return;
   }
-  return;
 };
 
 async function createManger(role){
