@@ -24,14 +24,65 @@ async function main() {
   // console.log(typeof(team[0]));
   // console.log(team[0].getName());
 
+  await buildTeam();
+  // console.log(role);
+  // console.log(role.role);
 
+  console.log(`This is your team:`);
+  console.log(team);
 }
 
+async function buildTeam() {
+  console.log(team);
+
+  const query = [
+    {
+        type: 'list',
+        message: `What type of Team Member would you like to add next?`,
+        name: 'role',
+        choices: ['Engineer', 'Intern', 'Exit'],
+    }
+  ]
+
+  const role = await inq.prompt(query);
+  // return role;
+
+  if(role.role == 'Engineer'){
+    // console.log(role);
+    await createEngineer(role.role);
+    buildTeam();
+  }else if(role.role == 'Intern'){
+    // console.log(role);
+    await createIntern(role.role);
+    buildTeam();
+  }else{
+    return;
+  }
+};
+
 async function createManger(role){
-  const data  = await getInfo('Manager')
+  const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Manager('Manger', a0, a1, a2, a3);
+  const team_member = new Manager(role, a0, a1, a2, a3);
+  team.push(team_member);
+  return;
+};
+
+async function createEngineer(role){
+  const data  = await getInfo(role)
+  // console.log(data)
+  const { a0, a1, a2, a3 } = data;
+  const team_member = new Engineer(role, a0, a1, a2, a3);
+  team.push(team_member);
+  return;
+};
+
+async function createIntern(role){
+  const data  = await getInfo(role)
+  // console.log(data)
+  const { a0, a1, a2, a3 } = data;
+  const team_member = new Intern(role, a0, a1, a2, a3);
   team.push(team_member);
   return;
 };
