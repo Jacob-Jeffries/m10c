@@ -33,7 +33,7 @@ async function main() {
 }
 
 async function buildTeam() {
-  console.log(team);
+  // console.log(team);
 
   const query = [
     {
@@ -50,14 +50,15 @@ async function buildTeam() {
   if(role.role == 'Engineer'){
     // console.log(role);
     await createEngineer(role.role);
-    buildTeam();
+    await buildTeam();
   }else if(role.role == 'Intern'){
     // console.log(role);
     await createIntern(role.role);
-    buildTeam();
+    await buildTeam();
   }else{
     return;
-  }
+  };
+  return;
 };
 
 async function createManger(role){
