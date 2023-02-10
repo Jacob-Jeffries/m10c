@@ -9,14 +9,24 @@ const Intern = require('./lib/Intern');
 const { identifier } = require('@babel/types');
 
 let team = [];
+let name;
 
 async function main() {
+  clear();
   console.log(`\n                ----------                \n`);
   console.log(`Welcome to Jacob's Team Builder Application!\n`);
   console.log(`         Copyright 2023 Jacob Jeffries      `);
   console.log(`\n                ----------                \n`);
 
-  console.log(`Please begin ny assinging a Team Manager by answering the following prompts:\n`);
+  name = await inq.prompt([
+    {
+      type: 'input',
+      name: 'teamName',
+      message : 'Please begin by entering your Team\'s Designation:',
+    }
+  ])
+
+  console.log(`\nPlease designate a Team Manager:\n`);
   
   await createManger('Manager');
   console.log(`\n                ----------                \n`);
@@ -24,13 +34,26 @@ async function main() {
   await buildTeam();
   console.log(`\n                ----------                \n`);
 
-  console.log(`This is your team:`);
+  clear();
+  console.log(`These are the members of ${name.teamName}:`);
   console.log(team);
-  console.log(`\n                ----------                \n`);
 };
 
+function clear(){
+  process.stdout.write('\033[2J');
+  process.stdout.write('\u001b[H\u001b[2J\u001b[3J');
+}
+
+
 async function buildTeam() {
-  // console.log(team);
+  clear();
+  console.log(`\n                ----------                \n`);
+  console.log(`Welcome to Jacob's Team Builder Application!\n`);
+  console.log(`         Copyright 2023 Jacob Jeffries      `);
+  console.log(`\n                ----------                \n`);
+  console.log(`\n`);
+  console.log(`Lets now add the rest of your team members; you may add either a Software Engineer, or an Interen\n`);
+  console.log(`\n                ----------                \n`);
 
   const query = [
     {
