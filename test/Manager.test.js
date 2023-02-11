@@ -13,7 +13,6 @@ let bilbo = new Manager(role, name, id, email, attrLabel, attr, officeNumber);
 
 describe('Manager', () => {
   it('Creates a new Manager SubClass, from input', () => {
-    // console.log(bilbo);
     expect(bilbo).toBeInstanceOf(Employee);
     expect(bilbo).toBeInstanceOf(Manager);
   })
@@ -21,7 +20,6 @@ describe('Manager', () => {
   describe('getName', () => {
     it(`It returns ${name}`, () => {
       const results = bilbo.getName();
-      // console.log(results);
       expect(results).toEqual(name);
     })
   })
@@ -29,7 +27,6 @@ describe('Manager', () => {
   describe('getID', () => {
     it(`It returns ${id}`, () => {
       const results = bilbo.getID();
-      // console.log(results);
       expect(results).toEqual(id);
     })
   })
@@ -37,7 +34,6 @@ describe('Manager', () => {
   describe('getEmail', () => {
     it(`It returns ${email}`, () => {
       const results = bilbo.getEmail();
-      // console.log(results);
       expect(results).toEqual(email);
     }) 
   })
@@ -45,7 +41,6 @@ describe('Manager', () => {
   describe('getOfficeNumber', () => {
     it(`It returns ${officeNumber}`, () => {
       const results = bilbo.getOfficeNumber();
-      // console.log(results);
       expect(results).toEqual(officeNumber);
     }) 
   })
@@ -53,7 +48,6 @@ describe('Manager', () => {
   describe('getRole', () => {
     it(`It returns ${role}`, () => {
       const results = bilbo.getRole();
-      // console.log(results);
       expect(results).toEqual(role);
     })
   })
@@ -61,7 +55,6 @@ describe('Manager', () => {
   describe('getAttrLabel', () => {
     it(`It returns ${attrLabel}`, () => {
       const results = bilbo.getAttrLabel();
-      // console.log(results);
       expect(results).toEqual(attrLabel);
     })
   })
@@ -69,7 +62,6 @@ describe('Manager', () => {
   describe('getAttr', () => {
     it(`It returns ${attr}`, () => {
       const results = bilbo.getAttr();
-      // console.log(results);
       expect(results).toEqual(attr);
     })
   })

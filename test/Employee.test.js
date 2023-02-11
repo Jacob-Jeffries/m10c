@@ -12,14 +12,12 @@ let bilbo = new Employee(role, name, id, email, attrLabel, attr);
 describe('Employee', () => {
   it('Creates a new Employee class, from input', () => {
     const results = bilbo;
-    // console.log(results);
     expect(results).toBeInstanceOf(Employee);
   })
 
   describe('getName', () =>{
     it(`It returns ${name}`, () => {
       const results = bilbo.getName();
-      // console.log(results);
       expect(results).toEqual(name);
 
     })
@@ -28,7 +26,6 @@ describe('Employee', () => {
   describe('getID', () =>{
     it(`It returns ${id}`, () => {
       const results = bilbo.getID();
-      // console.log(results);
       expect(results).toEqual(id);
     })
   })
@@ -36,7 +33,6 @@ describe('Employee', () => {
   describe('getEmal', () =>{
     it(`It returns ${email}`, () => {
       const results = bilbo.getEmail();
-      // console.log(results);
       expect(results).toEqual(email);
     })
   })
@@ -44,7 +40,6 @@ describe('Employee', () => {
   describe('getRole', () => {
     it(`It returns ${role}`, () => {
       const results = bilbo.getRole();
-      // console.log(results);
       expect(results).toEqual(role);
     })
   })
@@ -52,7 +47,6 @@ describe('Employee', () => {
   describe('getAttrLabel', () => {
     it(`It returns ${attrLabel}`, () => {
       const results = bilbo.getAttrLabel();
-      // console.log(results);
       expect(results).toEqual(attrLabel);
     })
   })
@@ -60,7 +54,6 @@ describe('Employee', () => {
   describe('getAttr', () => {
     it(`It returns ${attr}`, () => {
       const results = bilbo.getAttr();
-      // console.log(results);
       expect(results).toEqual(attr);
     })
   })
