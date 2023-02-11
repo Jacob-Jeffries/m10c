@@ -54,7 +54,7 @@ async function buildTeam() {
   console.log(`         Copyright 2023 Jacob Jeffries      `);
   console.log(`\n                ----------                \n`);
   console.log(`\n`);
-  console.log(`Lets now add the rest of your team members; you may add either a Software Engineer, or an Interen\n`);
+  console.log(`Lets now add the rest of your team members;\nyou may add either a Software Engineer, or an Intern.\n`);
   console.log(`\n                ----------                \n`);
 
   const query = [
@@ -87,7 +87,7 @@ async function createManger(role){
   const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Manager(role, a0, a1, a2, 'Office Number', a3);
+  const team_member = new Manager(role, a0, a1, a2, 'Office Number', a3, a3);
   team.push(team_member);
   return;
 };
@@ -96,7 +96,7 @@ async function createEngineer(role){
   const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Engineer(role, a0, a1, a2, 'GitHub Profile', a3);
+  const team_member = new Engineer(role, a0, a1, a2, 'GitHub Profile', a3, a3);
   team.push(team_member);
   return;
 };
@@ -105,7 +105,7 @@ async function createIntern(role){
   const data  = await getInfo(role)
   // console.log(data)
   const { a0, a1, a2, a3 } = data;
-  const team_member = new Intern(role, a0, a1, a2, 'School', a3);
+  const team_member = new Intern(role, a0, a1, a2, 'School', a3, a3);
   team.push(team_member);
   return;
 };
@@ -154,23 +154,39 @@ function getInfo(role){
   return inq.prompt(query);
 };
 
-function generateHTML(team){
-
-  let card;
+async function generateHTML(team){
+  
+  let uniqueAttr = '';
+  let card = '';
 
   team.forEach(element => {
-    // console.log(element);
-    // console.log(element.getRole());
+
+    switch(element.getRole()) {
+      case 'Manager':
+        uniqueAttr = `${element.getAttrLabel()}: ${element.getOfficeNumber()}`;
+        break;
+      case 'Engineer':
+        uniqueAttr = `<a href="https://github.com/${element.getGithub()}" target="_blank">${element.getGithub()}</a>`;
+        break;
+      case 'Intern':
+        uniqueAttr = `${element.getAttrLabel()}: ${element.getSchool()}`;
+        break;
+      default:
+        uniqueAttr = 'Wow Jacob messed up'; 
+    };
+
     let tempCard =
-    `<div class="card-body">
+    `
+    <div class="card-body">
     <h5 class="card-title">${element.getName()}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${element.getRole()}</h6>
     <p class="card-text">ID: ${element.getID()}</p>
-    <p class="card-text">Email: 
-      <a href="mailto:${element.getEmail()}">${element.getEmail()}</a>
-    </p>
-    <p class="card-text">${element.getAttr()}: ${element[3]}</p>
-    </div>`;
+    <p class="card-text">Email:
+      <br/>
+      <a href="mailto:${element.getEmail()}">${element.getEmail()}</a></p>
+    <p class="card-text">${uniqueAttr}</p>
+    </div>
+    `;
 
     card = card + tempCard;
   });
@@ -231,18 +247,15 @@ function generateHTML(team){
       <!--BOOTSTRAP-->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   
-      <!--JQUERY-->
-      <!-- <script src="~https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>-->
-  
-      <!--JAVASCRIPT-->
-      <!-- <script src="./assets/script.js"></script>-->
-  
     </body>
   
   </html>
   `
-
   console.log(index);
-}
+
+  fs.writeFile(`./dist/index.html`, index, (err) =>
+    err ? console.error(err) : console.log(`Successfully wrote file.`));
+
+};
 
 main();
