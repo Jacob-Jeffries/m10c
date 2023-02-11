@@ -155,22 +155,39 @@ function getInfo(role){
 };
 
 function generateHTML(team){
-
+  
+  let uniqueAttr;
   let card;
 
   team.forEach(element => {
+
+    switch(element.getRole()) {
+      case 'Manager':
+        uniqueAttr = `${element.getAttrLabel()}: ${element.getOfficeNumber()}`;
+        break;
+      case 'Engineer':
+        uniqueAttr = `<a href src="https://github.com/${element.getGitHub()}">${element.getGitHub()}</a>`;
+        break;
+      case 'Intern':
+        uniqueAttr = `${element.getAttrLabel()}: ${element.getSchool()}`;
+        break;
+      default:
+        uniqueAttr = 'Wow Jacob messed up'; 
+    };
+
     // console.log(element);
     // console.log(element.getRole());
     let tempCard =
-    `<div class="card-body">
+    `
+    <div class="card-body">
     <h5 class="card-title">${element.getName()}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${element.getRole()}</h6>
     <p class="card-text">ID: ${element.getID()}</p>
     <p class="card-text">Email: 
-      <a href="mailto:${element.getEmail()}">${element.getEmail()}</a>
-    </p>
-    <p class="card-text">${element.getAttrLabel()}: ${element.getAttr()}</p>
-    </div>`;
+      <a href="mailto:${element.getEmail()}">${element.getEmail()}</a></p>
+    <p class="card-text">${uniqueAttr}</p>
+    </div>
+    `;
 
     card = card + tempCard;
   });
