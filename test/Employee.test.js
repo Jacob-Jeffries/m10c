@@ -4,9 +4,10 @@ let name = 'Bilbo';
 let id = '007';
 let email = 'bilbo@shire.com';
 let role = 'Employee';
+let attrLabel = 'Generic Label';
 let attr = 'Generic Attrubute';
 
-let bilbo = new Employee(role, name, id, email, attr);
+let bilbo = new Employee(role, name, id, email, attrLabel, attr);
 
 describe('Employee', () => {
   it('Creates a new Employee class, from input', () => {
@@ -45,6 +46,14 @@ describe('Employee', () => {
       const results = bilbo.getRole();
       // console.log(results);
       expect(results).toEqual(role);
+    })
+  })
+  
+  describe('getAttrLabel', () => {
+    it(`It returns ${attrLabel}`, () => {
+      const results = bilbo.getAttrLabel();
+      // console.log(results);
+      expect(results).toEqual(attrLabel);
     })
   })
 

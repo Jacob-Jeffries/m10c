@@ -6,9 +6,10 @@ let id = '007';
 let email = 'bilbo@shire.com';
 let school = 'school';
 let role = 'Intern'
-let attr = 'School';
+let attrLabel = 'School';
+let attr = 'MSU';
 
-let bilbo = new Intern(role, name, id, email, attr, school);
+let bilbo = new Intern(role, name, id, email, attrLabel, attr, school);
 
 describe('Intern', () => {
   it('Creates a new Intern SubClass, from input', () => {
@@ -54,6 +55,14 @@ describe('Intern', () => {
       const results = bilbo.getRole();
       // console.log(results);
       expect(results).toEqual(role);
+    })
+  })
+
+  describe('getAttrLabel', () => {
+    it(`It returns ${attrLabel}`, () => {
+      const results = bilbo.getAttrLabel();
+      // console.log(results);
+      expect(results).toEqual(attrLabel);
     })
   })
 
