@@ -262,6 +262,7 @@ async function generateHTML(team){
   `
   // A unique html file is generated for each unique team created
   // This will overwrite a file if the same team name is used twice
+  // Futrue work - remove spaces for the team name
   fs.writeFile(`./dist/${name.teamName}.html`, index, (err) =>
     err ? console.error(err) : console.log(`Successfully wrote file.`));
 
