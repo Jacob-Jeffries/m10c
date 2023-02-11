@@ -180,6 +180,7 @@ async function generateHTML(team){
     <div class="card-body">
     <h5 class="card-title">${element.getName()}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${element.getRole()}</h6>
+    <hr/>
     <p class="card-text">ID: ${element.getID()}</p>
     <p class="card-text">Email:
       <br/>
