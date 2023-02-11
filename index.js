@@ -54,7 +54,7 @@ async function buildTeam() {
   console.log(`         Copyright 2023 Jacob Jeffries      `);
   console.log(`\n                ----------                \n`);
   console.log(`\n`);
-  console.log(`Lets now add the rest of your team members; you may add either a Software Engineer, or an Interen\n`);
+  console.log(`Lets now add the rest of your team members;\nyou may add either a Software Engineer, or an Intern.\n`);
   console.log(`\n                ----------                \n`);
 
   const query = [
@@ -166,7 +166,7 @@ function generateHTML(team){
         uniqueAttr = `${element.getAttrLabel()}: ${element.getOfficeNumber()}`;
         break;
       case 'Engineer':
-        uniqueAttr = `<a href src="https://github.com/${element.getGitHub()}">${element.getGitHub()}</a>`;
+        uniqueAttr = `<a href src="https://github.com/${element.getGithub()}">${element.getGithub()}</a>`;
         break;
       case 'Intern':
         uniqueAttr = `${element.getAttrLabel()}: ${element.getSchool()}`;
@@ -183,7 +183,8 @@ function generateHTML(team){
     <h5 class="card-title">${element.getName()}</h5>
     <h6 class="card-subtitle mb-2 text-muted">${element.getRole()}</h6>
     <p class="card-text">ID: ${element.getID()}</p>
-    <p class="card-text">Email: 
+    <p class="card-text">Email:
+      <br/>
       <a href="mailto:${element.getEmail()}">${element.getEmail()}</a></p>
     <p class="card-text">${uniqueAttr}</p>
     </div>
