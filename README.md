@@ -1,4 +1,4 @@
-# Jacob's Team Builder Application
+# Jacob's Team Builder Application ![License Badge](https://img.shields.io/badge/license-MIT-green)
 
 ## Description
 
@@ -13,6 +13,8 @@ Start by cloning the public GitHub repo on your local machine. In the second ste
 ## Usage
 
 After starting the application, follow the onscreen prompts to enter your application's specific information.
+
+![Application Screenshot](./images/screenshot.jpg)
 
 ## License
 
