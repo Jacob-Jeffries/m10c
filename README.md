@@ -46,6 +46,8 @@ Once the application repo has been cloned and the npm packages installed, you ca
 
 Tests included are for the employee class and its subclasses: Manager, Engineer, Intern.
 
+![Application Screenshot](./src/npmTests.jpg)
+
 ## Questions
 
 Please submit questions through one of the following options:
