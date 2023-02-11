@@ -1,16 +1,17 @@
-//  This purpose if the following script is to ingest the user's CLI input.
-
+//  Imported files as global variables
 const inq = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/employee');
 const Engineer = require('./lib/Engineer');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
-const { identifier } = require('@babel/types');
 
+// Global variables to hold the team name and the team itself
+// Using an array for the team, it can be of any size
+// Future Upgrade - add a sort funciton to the array: Manager > Engineer> Intern
 let team = [];
 let name;
 
+// This is the main program function; it calls the main program loop
 async function main() {
   clear();
   console.log(`\n                ----------                \n`);
@@ -28,9 +29,11 @@ async function main() {
 
   console.log(`\nPlease designate a Team Manager:\n`);
   
+  // Async and await functions handle my inq promises 
   await createManger('Manager');
   console.log(`\n                ----------                \n`);
 
+  // buildTeam() is the main program loop
   await buildTeam();
   console.log(`\n                ----------                \n`);
 
@@ -41,12 +44,13 @@ async function main() {
   generateHTML(team);
 };
 
+// This function clears the terminal screen
 function clear(){
   process.stdout.write('\033[2J');
   process.stdout.write('\u001b[H\u001b[2J\u001b[3J');
 }
 
-
+// This is the principal program loop; team members can continually be created and added to the team array
 async function buildTeam() {
   clear();
   console.log(`\n                ----------                \n`);
@@ -67,49 +71,48 @@ async function buildTeam() {
   ];
 
   const role = await inq.prompt(query);
-  // return role;
 
   if(role.role == 'Engineer'){
-    // console.log(role);
     await createEngineer(role.role);
     await buildTeam();
   }else if(role.role == 'Intern'){
-    // console.log(role);
     await createIntern(role.role);
     await buildTeam();
   }else{
     return;
   };
+  // Exiting this loop returns to the main() function and them generates the HTML
   return;
 };
 
+// Code function to generate the class Manager
 async function createManger(role){
   const data  = await getInfo(role)
-  // console.log(data)
   const { a0, a1, a2, a3 } = data;
   const team_member = new Manager(role, a0, a1, a2, 'Office Number', a3, a3);
   team.push(team_member);
   return;
 };
 
+// Code function to generate the class Engineer 
 async function createEngineer(role){
   const data  = await getInfo(role)
-  // console.log(data)
   const { a0, a1, a2, a3 } = data;
   const team_member = new Engineer(role, a0, a1, a2, 'GitHub Profile', a3, a3);
   team.push(team_member);
   return;
 };
 
+// Code function to generate the class Intern
 async function createIntern(role){
   const data  = await getInfo(role)
-  // console.log(data)
   const { a0, a1, a2, a3 } = data;
   const team_member = new Intern(role, a0, a1, a2, 'School', a3, a3);
   team.push(team_member);
   return;
 };
 
+// This function gathers user information and returns the inq promise to the specific class generator that called it
 function getInfo(role){
 
   let role_char ='';
@@ -154,11 +157,15 @@ function getInfo(role){
   return inq.prompt(query);
 };
 
+// This function geneartes a 
 async function generateHTML(team){
   
   let uniqueAttr = '';
   let card = '';
-
+  
+  // This small loop moves through the team array (of any length), and creates a card for each employee
+  // This unique functions for each employee class made this more difficult, so I modified what a base employee class is
+  // I added attrLabel & attr to hold the unique elements of Manger, Engineer, & Intern 
   team.forEach(element => {
 
     switch(element.getRole()) {
@@ -189,6 +196,7 @@ async function generateHTML(team){
       </div>
     `;
 
+    // As the array cycles, an entire div element is concacted to the card variable
     card = card + tempCard;
   });
 
@@ -252,11 +260,12 @@ async function generateHTML(team){
   
   </html>
   `
-  console.log(index);
-
-  fs.writeFile(`./dist/index.html`, index, (err) =>
+  // A unique html file is generated for each unique team created
+  // This will overwrite a file if the same team name is used twice
+  fs.writeFile(`./dist/${name.teamName}.html`, index, (err) =>
     err ? console.error(err) : console.log(`Successfully wrote file.`));
 
 };
 
+// Run my program!
 main();
