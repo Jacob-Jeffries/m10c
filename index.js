@@ -169,7 +169,7 @@ function generateHTML(team){
     <p class="card-text">Email: 
       <a href="mailto:${element.getEmail()}">${element.getEmail()}</a>
     </p>
-    <p class="card-text">${element.getAttr()}: ${element[3]}</p>
+    <p class="card-text">${element.getAttrLabel()}: ${element.getAttr()}</p>
     </div>`;
 
     card = card + tempCard;
