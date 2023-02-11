@@ -154,10 +154,10 @@ function getInfo(role){
   return inq.prompt(query);
 };
 
-function generateHTML(team){
+async function generateHTML(team){
   
-  let uniqueAttr;
-  let card;
+  let uniqueAttr = '';
+  let card = '';
 
   team.forEach(element => {
 
@@ -166,7 +166,7 @@ function generateHTML(team){
         uniqueAttr = `${element.getAttrLabel()}: ${element.getOfficeNumber()}`;
         break;
       case 'Engineer':
-        uniqueAttr = `<a href src="https://github.com/${element.getGithub()}">${element.getGithub()}</a>`;
+        uniqueAttr = `<a href="https://github.com/${element.getGithub()}" target="_blank">${element.getGithub()}</a>`;
         break;
       case 'Intern':
         uniqueAttr = `${element.getAttrLabel()}: ${element.getSchool()}`;
@@ -175,8 +175,6 @@ function generateHTML(team){
         uniqueAttr = 'Wow Jacob messed up'; 
     };
 
-    // console.log(element);
-    // console.log(element.getRole());
     let tempCard =
     `
     <div class="card-body">
@@ -255,12 +253,9 @@ function generateHTML(team){
   `
   console.log(index);
 
-  try {
-    fs.writeFile(`./dist/index.html`, index, 'utf8');
-  }catch(err){
-    console.log('File did not write.');
-    console.log(err);
-  };
+  fs.writeFile(`./dist/index.html`, index, (err) =>
+    err ? console.error(err) : console.log(`Successfully wrote file.`));
+
 };
 
 main();
