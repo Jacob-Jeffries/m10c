@@ -18,6 +18,8 @@ After starting the application, follow the onscreen prompts to enter your applic
 
 ![Application Screenshot](./src/lotr_team.png)
 
+https://youtu.be/MyTyrIfKWg0
+
 ## License
 
 MIT License
