@@ -173,7 +173,7 @@ async function generateHTML(team){
         uniqueAttr = `${element.getAttrLabel()}: ${element.getOfficeNumber()}`;
         break;
       case 'Engineer':
-        uniqueAttr = `<a href="https://github.com/${element.getGithub()}" target="_blank">${element.getGithub()}</a>`;
+        uniqueAttr = `GitHub: <a href="https://github.com/${element.getGithub()}" target="_blank">${element.getGithub()}</a>`;
         break;
       case 'Intern':
         uniqueAttr = `${element.getAttrLabel()}: ${element.getSchool()}`;
