@@ -14,7 +14,9 @@ Start by cloning the public GitHub repo on your local machine. In the second ste
 
 After starting the application, follow the onscreen prompts to enter your application's specific information.
 
-![Application Screenshot](./images/screenshot.jpg)
+![Application Screenshot](./src/manager.jpg)
+
+![Application Screenshot](./src/lotr_team.png)
 
 ## License
 
